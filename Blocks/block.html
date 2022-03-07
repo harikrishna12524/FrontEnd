@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            font-family: calibri;
+        }
+        .lead-container{
+            display: grid;
+            grid-template-columns: 30% 10% 20% 20% 20%;
+            border: 2px gray solid;
+            border-radius: 10px;
+            box-shadow: 3px 4px gray;
+            box-sizing: border-box;
+            background-color: rgb(240, 240, 240);
+            padding: 5px;
+            transition: all 0.2s;
+        }
+        /* .inside-container{
+            display: inline-block;
+        } */
+        .left-inner{
+            
+            box-sizing: border-box;
+            display: inline-block;
+        }
+        .status-icon{
+            background-color: orange;
+            border: none;
+            display: inline-block;
+            border-radius: 10px;
+            padding: 2px 10px;
+            margin: 0%;
+            font-size: 12px;
+            font-family: calibri;
+            
+            /* font-style: calibri; */
+        }.green-font{
+            color: rgb(0, 187, 0);
+        }
+        .right-align{
+            text-align: center;
+        }
+        .lead-container:active{
+            box-shadow: none;
+            transform: translate(3px,4px);
+        }.lead-container:hover{
+            background-color: rgb(255, 255, 255);
+            /* transform: rotateX(360deg); */
+        }
+    </style>
+</head>
+<body>
+    <div class="lead-container">
+            <span class="left-upper left-inner"><span class="green-font">@icon </span>620</span>
+            <!-- <span class="left-lower left-inner">54000000000215</span> -->
+            <div><span class="status-icon center-align">PLANNING</span></div>
+            <span class="amount center-align">6000</span>
+            <span class="date right-align"><span class="green-font">Date : </span> 25 Jan 2021</span>
+            <span class="date right-align"><span class="green-font">Date : </span> 27 Jan 2022 </span>
+            <span class="customer-no">6310021050045</span>
+    </div>
+</body>
+</html>
