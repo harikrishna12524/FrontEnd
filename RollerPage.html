@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        :root{
+            --green-grad-low :linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(235,69,69,1) 0%, rgba(129,246,120,1) 0%, rgba(255,255,255,1) 100%);
+            --green-grad-high: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(235,69,69,1) 0%, rgba(129,246,120,1) 0%, rgba(255,255,255,1) 100%);
+            --red-grad-low: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(235,69,69,1) 0%, rgba(246,120,120,1) 0%, rgba(255,255,255,1) 100%);
+            --red-grad-high: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(235,69,69,1) 0%, rgba(246,120,120,1) 0%, rgba(255,255,255,1) 100%); 
+        }
+        body{
+            height: 700px;
+            display : grid;
+            grid-template-rows: 1fr min-content 1fr;
+        }
+        #floater{
+            width: 200px;
+            height: 200px;
+            border: 0px solid black;
+            border-radius: 50%;
+            justify-self: center;
+            align-self: center;
+            display: grid;
+            grid-template-rows: 1fr 1fr;
+            transition: all 1s;
+            box-shadow: 2px 2px 2px gray;
+        }
+        #floater:hover{
+            box-shadow: 10px 5px 5px grey;
+            transform: scale(1.1,1.1);
+        }
+        .rot-180{
+            transform: rotateZ(180deg) !important;
+        }
+        .rot-180:hover{
+            box-shadow: 10px 5px 5px grey !important;
+            transform: scale(1.1,1.1) !important;
+            transform: rotateZ(180deg) !important;
+        }
+        .rot-180:active{
+            transform: rotateZ(180deg) !important;
+        }
+        .green-bg{
+            background: var(--green-grad-high);
+            border-radius: 100px 100px 0px 0px ;
+            border: solid;
+            border-width: 0px;
+        }.red-bg{
+            background: var(--red-grad-low);
+            border-radius:  0px 0px 100px 100px ;
+        }
+        .grads{
+            transition: all 1s;
+
+        }
+        #upperHalf{
+            background: var(--green-grad-low);
+        }
+        #lowerHalf{
+            background: var(--red-grad-high);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="grads" id="upperHalf">
+
+    </div>
+    <div id="floater">
+        <div class="green-bg">
+
+        </div>
+        <div class="red-bg">
+
+        </div>    
+    </div>
+    <div class="grads" id="lowerHalf">
+
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            $("#floater").click(function(){
+
+                // $("#upperHalf").fadeOut(2000)
+                // $("#lowerHalf").fadeOut(2000);
+
+                var comb;
+                var source = [["--green-grad-low", "--red-grad-high"], ["--red-grad-low", "--green-grad-high"]]
+                if($(this).attr("class")=="rot-180"){
+                    $(this).removeClass("rot-180");
+                    comb = 0;
+                }else{
+                    $(this).addClass("rot-180");
+                    comb = 1;
+                }
+
+
+
+                new Promise((resolve)=>{setTimeout(()=>{
+                    $("#upperHalf").css("background", "var(" + source[comb][0] + ")");
+                    $("#lowerHalf").css("background", "var(" + source[comb][1] + ")");
+                    resolve("done")
+                } ,500)}).then(()=>{
+                    // $("#upperHalf").fadeIn(2000); 
+                    // $("#lowerHalf").fadeIn(2000);
+                })
+            })
+            
+        })
+
+    </script>
+    
+    
+</body>
+</html>
